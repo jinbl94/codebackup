@@ -1,0 +1,101 @@
+#!/bin/bash -
+#sync.sh
+
+########################################################################
+####							SYNC								####
+########################################################################
+#this script is used to compare two files, and save the different parts
+
+#exit numbers table
+#STATUS							VALUE
+#normal							0
+#there's no enogh arguments		1
+#listA or listB dosn't exists	2
+#lostB or lostA already exist	3
+
+#functions defined ahead of the program
+
+#function usage: show help information without closing the program
+usage()
+{
+	echo "USAGE: $0 listA listB lostB lostA
+OR:    $0 listA listB lostB
+about arguments:
+If there are only THREE arguments, this program will save strings in listA and don't exist in listB into file lostB.
+With FOUR arguments it will save strings in listB and don't exist in listB into lostA inaddition."
+}
+
+#function conpare: compare two lists and save strings in the first file and don't exist in the second file into the third file.
+compare()
+{
+	for file in `cat $1`
+	do
+		result=`cat $2 | grep $file`
+		for string in $result
+		do
+			if [ "$file" = "$string" ]
+			then
+				break
+			fi
+		done
+		if [ "$file" != "$string" ]
+		then
+			echo $file >> $3
+		fi
+	done
+}
+
+#check the arguments
+#1.check the number of arguments
+if [ "$#" -ne 3 -a "$#" -ne 4 ]
+then
+	usage
+	exit 1
+fi
+
+#check out whether listA and listB exist or not
+if [ ! -f $1 -o ! -f $2 ]
+then
+	usage
+	exit 2
+fi
+
+#check if lostA or lostB exists
+if [ "$#" -eq 3 ]
+then
+	if [ -f $3 ]
+	then
+		echo -n "file $3 already exists, overwrite the file? (y/n)"
+		read ow
+		if [ "$ow" = "n" ]
+		then
+			usage
+			exit 3
+		fi
+	fi
+elif [ $#=4 ]
+then
+	if [ -f $3 -o -f $4 ]
+	then
+		echo -n "file $3 or $4 already exists, overwrite the file(s)? (y/n)"
+		read ow
+		if [ "$ow" = "n" ]
+		then
+			usage
+			exit 3
+		fi
+	fi
+fi
+
+#actually this is what we need to do
+#creat file lostB and lostA
+rm -f $3 $4
+touch $3 $4
+#compare lostA and lostB
+compare $1 $2 $3
+#if there are four arguments compare lostB and lostA too
+if [ $# -eq 4 ]
+then
+	compare $2 $1 $4
+fi
+exit 0

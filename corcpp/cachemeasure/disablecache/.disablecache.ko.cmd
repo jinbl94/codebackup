@@ -1,0 +1,1 @@
+cmd_/home/tang/program/corcpp/cachemeasure/disablecache/disablecache.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/tang/program/corcpp/cachemeasure/disablecache/disablecache.ko /home/tang/program/corcpp/cachemeasure/disablecache/disablecache.o /home/tang/program/corcpp/cachemeasure/disablecache/disablecache.mod.o

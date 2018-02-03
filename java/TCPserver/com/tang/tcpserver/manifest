@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: tang
+Class-Path: com/tang/tcpserver
+Main-Class: com.tang.tcpserver.TCPserver

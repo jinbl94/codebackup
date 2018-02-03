@@ -1,0 +1,11 @@
+#!/bin/bash -
+make
+echo "size of caches"
+./cachemeasure
+echo "block size of L1 cache"
+./cacheblock
+echo "time cost to access Cache and memory"
+./speedcompare
+echo "exit..."
+exit 0
+

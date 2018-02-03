@@ -1,0 +1,241 @@
+ A pervasive “narrow waist” (not limited to
+		 the host-based communication as in the
+		 current Internet) for all key functions,
+ including access to principals, interaction
+ among stakeholders, and trust manage-
+ ment; it aims to provide interoperability at
+ all levels in the system, not just packet for-
+ warding.
+ The XIA components and their interactions
+ are illustrated in Fig. 4. The core of the XIA is
+ the Expressive Internet Protocol (XIP) support-
+ ing communication between various types of
+ principals. Three typical XIA principal types are-
+ content, host (defined by “who”), and service
+ (defined by what it does). They are open to
+ future extension. Each type of principal has a
+ narrow waist that defines the minimal function-
+ ality required for interoperability. Principles talk
+ to each other using expressive identifiers (XIDs),
+ which are 160 bit identifiers identifying hosts,
+ pieces of content, or services. The XIDs are
+ basically self-certifying identifiers taking advan-
+ tage of cryptographic hash technology. By using
+ this XID, the content retrieval no longer relies
+ on a particular host, service or network path.
+ XIP can then support future functions as a
+ diverse set of services. For low-level services, it
+ uses a path-segment-based network architecture
+ (named Tapa in their previous work) as the
+ basic building block; and builds services for con-
+ tent-transfer and caching and service for secure
+ content provenance at a higher level. XIA also
+ needs various trustworthy mechanisms and pro-
+ vides network availability even when under
+ attack. Finally, XIA defines explicit interfaces
+ between network actors with different roles and
+ goals.
+ G LOBAL E NVIRONMENT FOR
+ N ETWORK I NNOVATIONS (GENI)
+	GENI [7] is a collaborative program supported
+	by NSF aimed at providing a global large-scale
+	experimental testbed for future Internet archi-
+	tecture test and validation. Started in 2005, it
+	has attracted broad interest and participation
+	from both academia and industry. Besides its ini-
+	tial support from existing projects on a dedicated
+	backbone network infrastructure, it also aims to
+	attract other infrastructure platforms to partici-
+	pate in the federation — the device control
+	framework to provide these participating net-
+	works with users and operating environments, to
+	observe, measure, and record the resulting exper-
+	imental outcomes. So generally, GENI is differ-
+	30
+	ent from common testbeds in that it is a general-
+	purpose large-scale facility that puts no limits on
+	the network architectures, services, and applica-
+	tions to be evaluated; it aims to allow clean-slate
+	designs to experiment with real users under real
+	conditions.
+	The key idea of GENI is to build multiple
+	virtualized slices out of the substrate for resource
+	sharing and experiments. It contains two key
+	pieces:
+	• Physical network substrates that are expand-
+	able building block components
+	• A global control and management frame-
+	work that assembles the building blocks
+	together into a coherent facility
+	Thus, intuitively two kinds of activities will be
+	involved in GENI testbeds: one is deploying a
+	prototype testbed federating different small and
+	medium ones together (e.g., the OpenFlow
+			testbed for campus networks [8]); the other is to
+	run observable, controllable, and recordable
+	experiments on it.
+	There are several working groups concentrat-
+	ing on different areas, such as the control frame-
+	work working group; GENI experiment workflow
+	and service working group; campus/operation,
+	management, integration, and security working
+	group; and instrumentation and management
+	working group.
+	The GENI generic control framework con-
+	sists of several subsystems and corresponding
+	basic entities:
+	• Aggregate and components
+	• Clearinghouse
+	• Research
+	organizations,
+	including
+	researchers and experiment tools
+	• Experiment support service
+	• “Opt-in” end users
+	• GENI operation and management
+	Clearinghouses from different organizations and
+	places (e.g., those from the United States and
+			European Union) can be connected through fed-
+	eration. By doing this, GENI not only federates
+	with identical “GENI-like” systems, but also with
+	any other system if they comply with a clearly
+	defined and relatively narrow set of interfaces
+	for federation. With these entities and subsys-
+	tems, “slices” can be created on top of the
+	shared substrate for miscellaneous research-
+	defined specific experiments, and end users can
+	“opt in” onto the GENI testbed accordingly.
+	GENI’s research and implementation plan
+	consists of multiple continuous spirals (currently
+			in spiral 3). Each spiral lasts for 12 months. Spi-
+	ral 1 ran from 2008 to 2009; spiral 2 ran from
+	2009 to 2010; spiral 3 started in 2011. In spiral 1,
+	the primary goals were to demonstrate one or
+	more early prototypes of the GENI control
+	framework and end-to-end slice operation across
+	multiple technologies; there were five competing
+	approaches to the GENI control framework,
+	called “clusters.”
+	Cluster A was the Trial Integration Environ-ment based on DETER (TIED) control frame-
+	work focusing on federation, trust, and security.
+	It was a one-project cluster based on the Cyber-
+	Defense Technology Experimental Research
+	(DETER) control framework by the University
+	of Southern California (USC)/ISI, which is an
+	individual “mini-GENI” testbed to demonstratefederated and coordinated network provisioning.
+	Cluster A particularly aimed to provide usability
+	across multiple communities through federation.
+	The project delivered software “fedd” as the
+	implementation of the TIED federation archi-
+	tecture providing dynamic and on-demand feder-
+	ation, and interoperability across ProtoGENI,
+	GENIAPI, and non-GENI aggregate. It included
+	an Attribute Based Access Control (ABAC)
+	mechanism for large-scale distributed systems. It
+	created a federation with two other projects:
+	StarBED in Japan and ProtoGENI in the Unit-
+	ed States.
+	Cluster B was a control framework based on
+	PlanetLab implemented by Princeton University
+	emphasizing experiments with virtualized
+	machines over the Internet. By the end of spiral
+	2, it included at least 12 projects from different
+	universities and research institutes. The results
+	of these projects are to be integrated into the
+	PlanetLab testbed. PlanetLab provided “GENI-
+	wrapper” code for independent development of
+	an aggregate manager (AM) for Internet enti-
+	ties. A special “lightweight” protocol was intro-
+	duced to interface PlanetLab and OpenFlow
+	equipment. Through these mechanisms, other
+	projects in the cluster can design their own sub-
+	strates and component managers with different
+	capacities and features.
+	Cluster C was the ProtoGENI control frame-
+	work by the University of Utah based on Emu-
+	lab, emphasizing network control and
+	management. By the end of spiral 2, it consisted
+	of at least 20 projects. The cluster integrated
+	these existing and under-construction systems to
+	provide key GENI functions. The integration
+	included four key components: a backbone based
+	on Internet2; sliceable and programmable PCs
+	and NetFPGA cards; and subnets of wireless
+	and wired edge clusters. Cluster C so far is the
+	largest set of integrated projects in GENI.
+	Cluster D was Open Resource Control Archi-
+	tecture (ORCA) from Duke University and
+	RENCI focusing on resource allocation and
+	integration of sensor networks. By the end of
+	spiral 2, it consisted of five projects. ORCA tried
+	to include optical resources from the existing
+	Metro-Scale Optical Testbed (BEN). Different
+	from other clusters, the ORCA implementation
+	included the integration of wireless/sensor proto-
+	types. It maintains a clearinghouse for the
+	testbeds under the ORCA control framework
+	through which it connects to the national back-
+	bone and is available to external researchers.
+	Cluster E was Open-Access Research Testbed
+	for Next-Generation Wireless Networks
+	(ORBIT) by Rutgers University focusing on
+	mobile and wireless testbed networks. It includ-
+	ed three projects by the end of spiral 2. The
+	basic ORBIT did not include a full clearing-
+	house implementation. Cluster E tried to
+	research how mobile and wireless work can
+	affect and possibly be merged into the GENI
+	architecture. WiMAX is one of the wireless net-
+	work prototypes in this cluster.
+	A more detailed description of the clusters
+	and their specific approaches and corresponding
+	features can be found in our previous survey
+	[18]. Even more details can be found from GENI
+	project websites and wikis [7].
+	Figure 4. XIA components and interactions.
+	We can see that spirals 1 and 2 integrated a
+	very wide variety of testbeds into its control
+	framework. Spiral 2 was the second phase aim-
+	ing to move toward continuous experimentation.
+	Key developments include improved integration
+	of GENI prototypes; architecture, tools, and ser-
+	vices enabling experiment instrumentation; inter-
+	operability across GENI prototypes; and
+	researcher identity management. In spiral 3, the
+	goal is to coordinate the design and deployment
+	of a first GENI Instrumentation and Measure-
+	ment Architecture. Supporting experimental use
+	of GENI and making it easier to use are also key
+	goals. Also, more backbone services and partici-
+	pants are expected to join in the GENI frame-
+	work for this spiral.
+	Another notable and unique characteristic
+	offered by GENI is that instrumentation and
+	measurement support have been designed into
+	the system from the beginning since the ultimate
+	goal of GENI is to provide an open and extensi-
+	ble testbed for experimentation with various new
+	Internet architectures.
+	R ESEARCH P ROJECTS FROM THE
+	E UROPEAN U NION AND A SIA
+	The European Union has also initiated a bundle
+	of research projects on future Internet architec-
+	tures. In this section, we introduce the research
+	organized under the European Seventh Frame-
+	work Programme (FP7) along with that in Japan
+	and China.
+	E UROPEAN U NION
+	The European Future Internet Assembly [19]
+	(abbreviated FIA as in the United States) is a
+	collaboration between projects under FP7 on
+	future Internet research. Currently, the FIA
+	brings together about 150 projects that are part
+	of FP7. These projects have a wide coverage,
+	including the network of the future, cloud com-
+	puting, Internet of service, trustworthy informa-
+	tion and communication technology (ICT),
+	networked media and search systems, socio-eco-
+	nomic aspects of the future Internet, application
+	domain, and Future Internet Research and
+	Experimentation (FIRE) [10]. The FIA main-
+	tains a European Future Internet Portal [20],
