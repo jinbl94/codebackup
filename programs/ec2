@@ -1,1 +1,0 @@
-ssh -i ~/.ssh/TFKey.pem ec2-user@ec2-54-71-57-120.us-west-2.compute.amazonaws.com
